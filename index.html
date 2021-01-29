@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Security Camera</title>
+        <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet"/>
+        
+    </head>
+
+    <body onload="completeTransmisionProcess()">
+        <div id="videosContainer">
+        </div>
+        <br />
+        <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Call</button>
+        <p id="camerasResult"></p>
+    </body>
+
+
+    <script src="scripts/cameraComunication.js" ></script>
+</html>
