@@ -15,12 +15,13 @@ var database = firebase.database().ref();
 var yourVideo = document.getElementById("yourVideo");
 var friendsVideo = document.getElementById("friendsVideo");
 var yourId = Math.floor(Math.random()*1000000000);
+let cameraIndex = 0;
 
 //Create an account on Viagenie (http://numb.viagenie.ca/), and replace {'urls': 'turn:numb.viagenie.ca','credential': 'websitebeaver','username': 'websitebeaver@email.com'} with the information from your account
 var servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:19302'}, {'urls': 'turn:numb.viagenie.ca','credential': 'Glados101','username': 'vigilantecasas@gmail.com'}]};
 var pc = new RTCPeerConnection(servers);
 pc.onicecandidate = (event => event.candidate?sendMessage(yourId, JSON.stringify({'ice': event.candidate})):console.log("Sent All Ice") );
-pc.onaddstream = (event => {console.log("stream added detected");doCompleteTransmisionProcess(event.stream);} /*friendsVideo.srcObject = event.stream*/);
+pc.onaddstream = (event => {cameraIndex++; doCompleteTransmisionProcess(event.stream, cameraIndex-1);} /*friendsVideo.srcObject = event.stream*/);
 
 function sendMessage(senderId, data) {
     var msg = database.push({ sender: senderId, message: data });
@@ -63,12 +64,12 @@ function createVideoElement(count){
 }
 
 
-async function doCompleteTransmisionProcess(stream) {
+async function doCompleteTransmisionProcess(stream, cameraIndex) {
     console.log("Si entre champ");
 
-    var tempVideoElement = createVideoElement(0);
+    var tempVideoElement = createVideoElement(cameraIndex);
     document.getElementById("videosContainer").appendChild(tempVideoElement);
-    tempVideoElement = document.getElementById("camVideo0");
+    tempVideoElement = document.getElementById("camVideo"+cameraIndex);
 
     tempVideoElement.srcObject = stream;
 
