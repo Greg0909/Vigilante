@@ -4,8 +4,16 @@ video {
     margin: 10px 0px 0px 10px;
     width: 320px;
     height: 240px;
-   }
-   button {
+}
+button {
     margin: 5px 0px 0px 10px !important;
     width: 654px;
-   }
+}
+
+.btn-info, .btn-warning{
+    width: 320px;
+}
+
+.bs{
+    margin-bottom: 40px;
+}

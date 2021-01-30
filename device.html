@@ -10,7 +10,7 @@
         
     </head>
 
-    <body>
+    <body onload="completeTransmisionProcess()">
         <a href="./index.html">
             <button type="button" class="btn btn-primary btn-lg"> Dashboard</button>
         </a>
@@ -19,18 +19,18 @@
             <button type="button" class="btn btn-primary btn-lg"> Device</button>
         </a>
 
-        <h1>Dashboard</h1>
+        <h1>Device Page</h1>
         <div id="videosContainer">
         </div>
         <br />
-
-        <div class="bs">
-            <button type="button" class="btn btn-warning" onclick="askForConnection()"> Ask for conection</button>
-        </div>
         
+        <!-- <div class="bs">
+            <button type="button" class="btn btn-info" onclick="uploadCredentials()"> Upload Credentials</button>
+        </div> -->
+
         <p id="camerasResult"></p>
     </body>
 
 
-    <script src="scripts/cameraComunicationReciver.js" ></script>
+    <script src="scripts/cameraComunicationSender.js" ></script>
 </html>
