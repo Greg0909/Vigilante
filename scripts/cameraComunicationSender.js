@@ -12,8 +12,7 @@ firebase.initializeApp(config);
 firebase.analytics();
 
 var database = firebase.database().ref();
-var yourVideo = document.getElementById("yourVideo");
-console.log(yourVideo);
+
 var friendsVideo = document.getElementById("friendsVideo");
 var yourId = Math.floor(Math.random()*1000000000);
 
@@ -70,7 +69,7 @@ function createVideoElement(count){
 async function completeTransmisionProcess() {
 
     // Obtains all the available cameras of the device 
-    const cameras = await getConnectedDevices("videoinput");
+    var cameras = await getConnectedDevices("videoinput");
 
     // Gets the <p> element to display the lenght of the camera array and
     // later the deviceId of each camera.
@@ -85,7 +84,8 @@ async function completeTransmisionProcess() {
 
     if (cameras && cameras.length > 0) {
         // Goes through all cameras to stream them and display them in screen for debugging
-      for(let i=0; i < cameras.length; i++){
+      for(let i=cameras.length-1; i >=0 ; i--){
+
         const ii=i;
         // Here the deviceId is added to the <p> element responsible of showing
         // camera debugg info.
@@ -101,8 +101,11 @@ async function completeTransmisionProcess() {
         
         // Start the mediaDevices thread in which the camera is selected through the deviceId
         // and is linked to the stream (for debugging it is also added to the screen display)
-        navigator.mediaDevices.getUserMedia({audio:true, video:{'deviceId':cameras[ii].deviceId}})
-        .then(stream => {camerasDisplays[cameraIndex].srcObject = stream; cameraIndex++; return stream;})
+        await navigator.mediaDevices.getUserMedia({audio:true, video:{'deviceId':cameras[ii].deviceId}})
+        .then(stream => {
+            camerasDisplays[cameraIndex].srcObject = stream; 
+            cameraIndex++;
+            return stream;})
         .then(stream => pc.addStream(stream));
 
         // navigator.mediaDevices.getUserMedia({audio:true, video:true})
