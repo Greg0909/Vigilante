@@ -101,13 +101,13 @@ async function completeTransmisionProcess() {
         
         // Start the mediaDevices thread in which the camera is selected through the deviceId
         // and is linked to the stream (for debugging it is also added to the screen display)
-        // navigator.mediaDevices.getUserMedia({audio:true, video:{'deviceId':cameras[ii].deviceId}})
-        // .then(stream => {camerasDisplays[cameraIndex].srcObject = stream; cameraIndex++;})
-        // .then(stream => pc.addStream(stream));
+        navigator.mediaDevices.getUserMedia({audio:true, video:{'deviceId':cameras[ii].deviceId}})
+        .then(stream => {camerasDisplays[cameraIndex].srcObject = stream; cameraIndex++; return stream;})
+        .then(stream => pc.addStream(stream));
 
-        navigator.mediaDevices.getUserMedia({audio:true, video:true})
-          .then(stream => camerasDisplays[0].srcObject = stream)
-          .then(stream => pc.addStream(stream));
+        // navigator.mediaDevices.getUserMedia({audio:true, video:true})
+        //   .then(stream => camerasDisplays[0].srcObject = stream)
+        //   .then(stream => pc.addStream(stream));
       }
 
 
