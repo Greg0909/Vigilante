@@ -1,3 +1,7 @@
+:root{
+    --percentage-scale: 0.2;
+}
+
 video {
     background-color: #ddd;
     border-radius: 7px;
@@ -16,4 +20,27 @@ button {
 
 .bs{
     margin-bottom: 40px;
+}
+
+body{
+    background-color: rgb(235, 235, 235);
+}
+
+canvas {
+    transform-origin: left;
+    border: 1px solid white;
+    width: calc(640px * var(--percentage-scale));
+    height: calc(480px * var(--percentage-scale));
+    transform: scale( calc(1 / var(--percentage-scale)));
+    image-rendering: pixelated;
+    transform-origin: top left;
+}
+
+.canvas-single-container{
+    width:640px;
+    height: 480px;
+}
+
+.canvas-multiple-display{
+    display: flex;
 }

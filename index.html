@@ -15,12 +15,13 @@
             <button type="button" class="btn btn-primary btn-lg"> Dashboard</button>
         </a>
         
-        <a href="./device.html">
-            <button type="button" class="btn btn-primary btn-lg"> Device</button>
+        <a >
+            <button type="button" class="btn btn-primary btn-lg"> Ask for picture </button>
         </a>
 
         <h1>Dashboard</h1>
-        <div id="videosContainer">
+
+        <!-- <div id="videosContainer">
         </div>
         <br />
 
@@ -28,9 +29,19 @@
             <button type="button" class="btn btn-warning" onclick="askForConnection()"> Ask for conection</button>
         </div>
         
-        <p id="camerasResult"></p>
+        <p id="camerasResult"></p> -->
+        <div class="canvas-multiple-display">
+            <div class="canvas-single-container">
+                <canvas id="canvas1"></canvas>
+            </div>
+            <div class="canvas-single-container">
+                <canvas id="canvas2"></canvas>
+            </div>
+        </div>
+        
     </body>
 
 
-    <script src="scripts/cameraComunicationReciver.js" ></script>
+    <script src="./scripts/firebaseInit.js"></script>
+    <script src="./scripts/pullImage.js"></script>
 </html>
